@@ -16,7 +16,7 @@ const Job = ({job}) => {
                         </span>
                         </Card.Title>
                         <Card.Subtitle className='text-muted'>
-                            {new Date(job.created_at).toLocaleDateString()}
+                            Posted on: {new Date(job.created_at).toDateString()}
                         </Card.Subtitle>
                         <div className='d-flex mt-2'>
                             <h6><Badge variant="secondary">{job.type}</Badge></h6>
@@ -26,7 +26,8 @@ const Job = ({job}) => {
                             <ReactMarkdown source={job.how_to_apply}/>
                         </div>
                         <div>
-                            <button onClick={() => setOpen(prevOpen => !prevOpen)} className='btn btn-primary btn-sm'>{open ? 'Hide Details': 'Show Details'}</button>
+                            <button onClick={() => setOpen(prevOpen => !prevOpen)}
+                                    className='btn btn-primary btn-sm'>{open ? 'Hide Details' : 'Show Details'}</button>
                         </div>
                         <Collapse in={open}>
                             <div className='mt-4'>
@@ -35,7 +36,7 @@ const Job = ({job}) => {
                         </Collapse>
                     </div>
                     <div className='d-none d-md-block'>
-                        <img alt={job.company} src={job.company_logo} height='50' width='50'/>
+                        {job.company_logo && <img alt={job.company} src={job.company_logo} height='50' width='50'/>}
                     </div>
                 </div>
             </Card.Body>
