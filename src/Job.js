@@ -1,6 +1,7 @@
 import React, {useState} from 'react';
 import {Badge, Card, Collapse} from "react-bootstrap";
 import ReactMarkdown from "react-markdown";
+import { FaMapMarkerAlt } from "react-icons/fa";
 
 const Job = ({job}) => {
     const [open, setOpen] = useState(false)
@@ -21,6 +22,9 @@ const Job = ({job}) => {
                         <div className='d-flex mt-2'>
                             <h6><Badge variant="secondary">{job.type}</Badge></h6>
                             <h6 className='mx-2'><Badge variant="secondary">{job.location}</Badge></h6>
+                        </div>
+                        <div>
+                            <FaMapMarkerAlt/><b> {job.location}</b>
                         </div>
                         <div style={{wordBreak: 'break-all'}}>
                             <ReactMarkdown source={job.how_to_apply}/>
